@@ -18,18 +18,12 @@ public:
         int i = 0;
         while (i < heights.size() || ! s.empty())
         {
-            if (!s.empty())
-                cout << (int)heights[i] << " " << s.top() << endl;
-            else
-                cout << (int)heights[i] << endl;
-            
             if (s.empty() || (i < heights.size() && heights[s.top()] <= heights[i]))
                 s.push(i++);
             else
             {
                 tp = s.top();  
                 s.pop();  
-
                 area_with_top = heights[tp] * (s.empty() ? i : i - s.top() - 1);
                 if (max_area < area_with_top) max_area = area_with_top;
             }
@@ -49,10 +43,7 @@ public:
                 if (matrix[i][j] == '0') matrix[i][j] = 0;
                 else 
                     matrix[i][j] = i==0 ? 1 : matrix[i-1][j] + 1;
-
-                cout << (int)matrix[i][j] << " ";
             }
-            cout << endl;
         }
 
         for (int i = 0; i < matrix.size(); i++){
